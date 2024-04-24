@@ -12,7 +12,7 @@ namespace TimesheetApp.Util
         public void LogError(Exception error)
         {
             string message = error.Message;
-            //cuva poruku greske u bazi podataka
+            //Cuva poruku greske u bazi podataka
             throw new NotImplementedException();
         }
     }

@@ -11,22 +11,22 @@ namespace TimesheetApp
 {
     public class TimeLogger
     {
-        ITaskDB taskDB;
+        ITask task;
         IEmailSender emailSender;
         IErrorLogger errorLogger;
         IUserLogger userLogger;
-        ITaskManager projectAndTaskManager;
+        ITaskManager taskManager;
 
         public TimeLogger()
         {
-            taskDB = new TaskDB();
+            task = new TaskLogger();
             emailSender = new EmailSender();
             errorLogger = new ErrorLogger();
             userLogger = new UserLogger();
-            projectAndTaskManager = new TaskManager();
+            taskManager = new TaskManager();
         }
 
-        public void LogTime(int hours, int minutes)
+        public void LogTime(int hours, int minutes, string description)
         {
             try
             {
@@ -35,10 +35,14 @@ namespace TimesheetApp
                 string userEmail = userLogger.GetLoggedUserEmail(userName);
 
                 //dobaviti podatke o projektu i aktivnosti (task) na projektu za koju se loguje vreme
-                int taskId = projectAndTaskManager.GetTaskId(userName, userEmail);
+                int taskId = taskManager.GetTaskId(userName, userEmail);
 
                 //logovati vreme - sacuvati podatke u bazi
-                bool saved = taskDB.SaveToDB(taskId, hours, minutes);
+                task.TaskId = taskId;
+                task.Hours = hours;
+                task.Minutes = minutes;
+                task.Description = description;
+                bool saved = task.SaveToDB();
                 if (saved)
                 {
                     //poslati mejl obavestenja o logovanom vremenu

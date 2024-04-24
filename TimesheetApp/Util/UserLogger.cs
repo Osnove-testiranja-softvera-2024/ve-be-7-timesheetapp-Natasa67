@@ -11,13 +11,13 @@ namespace TimesheetApp.Util
     {
         public string GetLoggedUserEmail(string userName)
         {
-            //vraca email korisnika na osnovu njegovog username-a
+            //Vraca email korisnika na osnovu njegovog username-a
             throw new NotImplementedException();
         }
 
         public string GetLoggedUserName()
         {
-            //vraca username trenutno logovanog korisnika
+            //Vraca username trenutno logovanog korisnika
             throw new NotImplementedException();
         }
     }

@@ -9,9 +9,9 @@ namespace TimesheetApp.Util
 {
     public class TaskManager : ITaskManager
     {
-        public int GetProjectAndTaskIds(string loggedUserName, string loggedUserEmail)
+        public int GetTaskId(string loggedUserName, string loggedUserEmail)
         {
-            //vraca ID aktivnosti za koju se loguje vreme na osnovu ulaznih paramentara
+            //Vraca ID aktivnosti za koju se loguje vreme na osnovu ulaznih paramentara
             throw new NotImplementedException();
         }
     }
